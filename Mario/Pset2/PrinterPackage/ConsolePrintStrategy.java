@@ -1,8 +1,8 @@
-package Mario.Pset2;
+package Mario.Pset2.PrinterPackage;
 
-/**
- * Created by ben on 8/3/15.
- */
+
+import Mario.Pset2.PrintStrategy;
+
 public class ConsolePrintStrategy implements PrintStrategy {
     public void printText(String layers) {
         System.out.println(layers);

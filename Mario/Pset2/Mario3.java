@@ -1,5 +1,8 @@
 package Mario.Pset2;
 
+import Mario.Pset2.PrinterPackage.ConsolePrintStrategy;
+import Mario.Pset2.PrinterPackage.FilePrintStrategy;
+
 import java.io.*;
 
 public class Mario3 {
@@ -8,7 +11,7 @@ public class Mario3 {
     private static final String NO_BRICK = " ";
 
     public static void main(String[] args) {
-        int hght = 0;
+        int hght = -1;
         String height = "";
         String outputMode = "";
 
@@ -21,7 +24,6 @@ public class Mario3 {
             }
             catch (IOException ex) {
                 System.out.println("I am sorry.  Error reading your input");
-                //ex.printStackTrace(new PrintStream(yourOutputStream));
                 ex.printStackTrace();
             }
             try {
@@ -29,7 +31,6 @@ public class Mario3 {
             }
             catch (NumberFormatException ex) {
                 System.out.println("You did not enter an integer");
-        //        ex.printStackTrace();
             }
         }
         while (hght < 0 || hght > 23);
@@ -63,18 +64,11 @@ public class Mario3 {
         PrintContext context = new PrintContext();
         if (outputMode.equals("c")) {
             context.setStrategy(new ConsolePrintStrategy());
-            context.printText(stringBuilder.toString());
+            context.printTextContext(stringBuilder.toString());
         }
         else {
             context.setStrategy(new FilePrintStrategy());
-
-            // Not sure about NullPointerException try/catch here
-            try {
-                context.printText(stringBuilder.toString());
-            }
-            catch (NullPointerException ex) {
-                ex.printStackTrace();
-            }
+            context.printTextContext(stringBuilder.toString());
         }
     }
 }
