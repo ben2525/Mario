@@ -7,9 +7,6 @@ import java.io.*;
 
 public class Mario3 {
 
-    private static final String BRICK = "#";
-    private static final String NO_BRICK = " ";
-
     public static void main(String[] args) {
         int hght = -1;
         String height = "";
@@ -35,17 +32,8 @@ public class Mario3 {
         }
         while (hght < 0 || hght > 23);
 
-        StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 1; i <= hght; i++) {
-            for (int k = 1; k <= hght - i; k++) {
-                stringBuilder.append(NO_BRICK);
-            }
-            for (int j = 1; j <= i + 1; j++) {
-                stringBuilder.append(BRICK);
-            }
-            stringBuilder.append(System.lineSeparator());
-        }
+        String pyramid = PyramidFactory.buildPyramid(hght);
 
         do {
             System.out.println("Enter  t  to print your output to a text file,");
@@ -56,7 +44,7 @@ public class Mario3 {
             }
             catch (IOException ex) {
                 System.out.println("I am sorry.  Error reading your input");
-                //        ex.printStackTrace();
+                ex.printStackTrace();
             }
         }
         while (!outputMode.equals("t") && !outputMode.equals("c"));
@@ -64,11 +52,11 @@ public class Mario3 {
         PrintContext context = new PrintContext();
         if (outputMode.equals("c")) {
             context.setStrategy(new ConsolePrintStrategy());
-            context.printTextContext(stringBuilder.toString());
+            context.printTextContext(pyramid);
         }
         else {
             context.setStrategy(new FilePrintStrategy());
-            context.printTextContext(stringBuilder.toString());
+            context.printTextContext(pyramid);
         }
     }
 }
