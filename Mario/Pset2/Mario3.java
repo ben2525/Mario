@@ -32,9 +32,6 @@ public class Mario3 {
         }
         while (hght < 0 || hght > 23);
 
-
-        String pyramid = PyramidFactory.buildPyramid(hght);
-
         do {
             System.out.println("Enter  t  to print your output to a text file,");
             System.out.println("Enter  c  to print your output to the console,");
@@ -49,14 +46,17 @@ public class Mario3 {
         }
         while (!outputMode.equals("t") && !outputMode.equals("c"));
 
+        PyramidFactory pyramidFactory = new PyramidFactory();
+        pyramidFactory.setHght(hght);
+
         PrintContext context = new PrintContext();
         if (outputMode.equals("c")) {
             context.setStrategy(new ConsolePrintStrategy());
-            context.printTextContext(pyramid);
+            context.printTextContext(pyramidFactory);
         }
         else {
             context.setStrategy(new FilePrintStrategy());
-            context.printTextContext(pyramid);
+            context.printTextContext(pyramidFactory);
         }
     }
 }

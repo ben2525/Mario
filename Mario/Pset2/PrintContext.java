@@ -7,8 +7,8 @@ public class PrintContext {
         this.strategy = strategy;
     }
 
-    public void printTextContext(String layers) {
-        strategy.printText(layers);
+    public void printTextContext(PyramidFactory pyramidFactory) {
+        strategy.printText(pyramidFactory);
     }
 
 }

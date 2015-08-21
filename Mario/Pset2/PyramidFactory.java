@@ -5,8 +5,15 @@ public class PyramidFactory {
 
     private static final String BRICK = "#";
     private static final String NO_BRICK = " ";
+    int hght;
 
-    public static String buildPyramid(int hght){
+    public void setHght(int hght) {
+        this.hght = hght;
+    }
+
+
+    @Override
+    public String toString() {
 
         StringBuilder stringBuilder = new StringBuilder();
 
