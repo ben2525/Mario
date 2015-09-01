@@ -46,17 +46,16 @@ public class Mario3 {
         }
         while (!outputMode.equals("t") && !outputMode.equals("c"));
 
-        PyramidFactory pyramidFactory = new PyramidFactory();
-        pyramidFactory.setHght(hght);
+        Structure structure = StructureFactory.makeStructure("P", hght);
 
         PrintContext context = new PrintContext();
+
         if (outputMode.equals("c")) {
             context.setStrategy(new ConsolePrintStrategy());
-            context.printTextContext(pyramidFactory);
-        }
-        else {
+            context.printTextContext(structure);
+        } else {
             context.setStrategy(new FilePrintStrategy());
-            context.printTextContext(pyramidFactory);
+            context.printTextContext(structure);
         }
     }
 }
