@@ -6,8 +6,8 @@ public class StructureFactory {
     public static Structure makeStructure(String structureType, int hght) {
 
         if (structureType.equals("P")) {
-            Pyramid pyramid = new Pyramid();
-            pyramid.BuildStructure(hght);
+            Pyramid pyramid = new Pyramid(hght);
+            pyramid.BuildStructure();
             return pyramid;
         } else
             return null;

@@ -5,7 +5,13 @@ public class Pyramid implements Structure{
 
     static StringBuilder stringBuilder = new StringBuilder();
 
-    public void BuildStructure(int height) {
+    private int height;
+
+    public Pyramid(int height) {
+        this.height = height;
+    }
+
+    public void BuildStructure() {
         for (int i = 1; i <= height; i++) {
             for (int k = 1; k <= height - i; k++) {
                 stringBuilder.append(NO_BRICK);

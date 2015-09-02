@@ -5,6 +5,6 @@ public interface Structure {
     String BRICK = "#";
     String NO_BRICK = " ";
 
-    void BuildStructure(int height);
+    void BuildStructure();
 
 }
