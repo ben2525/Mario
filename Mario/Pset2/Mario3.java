@@ -55,7 +55,15 @@ public class Mario3 {
 
         // The structure choice "P" is hard coded because it is the only choice
         // at this time. The argument would otherwise be the user's choice.
-        Structure structure = StructureFactory.makeStructure("P", hght);
+
+
+        //Structure structure = StructureFactory.makeStructure("P", hght);
+        /*
+          Above line changed to below 2 lines for Singleton
+          Other changes made in StructureFactory.java
+         */
+        Structure structure;
+        structure = StructureFactory.getInstance().makeStructure("P", hght);
 
         PrintContext context = new PrintContext();
 
