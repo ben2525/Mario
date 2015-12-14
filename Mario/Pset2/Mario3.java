@@ -6,7 +6,9 @@ import Mario.Pset2.PrinterPackage.FilePrintStrategy;
 import java.io.*;
 
 /*
-    Factory design pattern for Mario pyramid along with Strategy design pattern.
+    Dependency Injection implementation, building on Singleton design pattern
+    along with Factory design pattern for Mario pyramid along with Strategy
+    design pattern.
     All structures would implement the  Structure  interface.
     There is only a  Pyramid  option at this time, so the argument is
     hard coded.
@@ -14,11 +16,22 @@ import java.io.*;
 
 public class Mario3 {
 
-    public static void main(String[] args) {
-        int hght = -1;
-        String height = "";
-        String outputMode = "";
+    int hght = -1;
+    String height = "";
+    String outputMode = "";
 
+    private StructureFactory structureFactory;
+
+    public Mario3(StructureFactory structureFactory){
+        this.structureFactory = structureFactory;
+    }
+
+    public static void main(String[] args) {
+        Mario3 mario = new Mario3(StructureFactory.getInstance());
+        mario.startStructure();
+    }
+
+    public void startStructure() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         do {
@@ -62,17 +75,26 @@ public class Mario3 {
           Above line changed to below 2 lines for Singleton
           Other changes made in StructureFactory.java
          */
-        Structure structure;
-        structure = StructureFactory.getInstance().makeStructure("P", hght);
+
+        /*
+           Changes now made to Singleton Design.
+           Below 2 lines now removed to implement Dependency Injection
+         */
+        //Structure structure;
+        //structure = StructureFactory.getInstance().makeStructure("P", hght);
+
+        /*
+            Arguments in below print statements changed for Dependency Injection
+         */
 
         PrintContext context = new PrintContext();
 
         if (outputMode.equals("c")) {
             context.setStrategy(new ConsolePrintStrategy());
-            context.printTextContext(structure);
+            context.printTextContext(structureFactory.makeStructure("P", hght));
         } else {
             context.setStrategy(new FilePrintStrategy());
-            context.printTextContext(structure);
+            context.printTextContext(structureFactory.makeStructure("P", hght));
         }
     }
 }
