@@ -6,6 +6,8 @@ import Mario.Pset2.PrinterPackage.FilePrintStrategy;
 import java.io.*;
 
 /*
+    Now also includes Singleton design pattern on top of the already
+    implemented following:
     Factory design pattern for Mario pyramid along with Strategy design pattern.
     All structures would implement the  Structure  interface.
     There is only a  Pyramid  option at this time, so the argument is
