@@ -28,7 +28,7 @@ public class StructureFactory {
 
         if (structureType.equals("P")) {
             Pyramid pyramid = new Pyramid(hght);
-            pyramid.BuildStructure();
+            pyramid.buildStructure();
             return pyramid;
         } else
             return null;

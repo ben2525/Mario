@@ -11,7 +11,7 @@ public class Pyramid implements Structure{
         this.height = height;
     }
 
-    public void BuildStructure() {
+    public void buildStructure() {
         for (int i = 1; i <= height; i++) {
             for (int k = 1; k <= height - i; k++) {
                 stringBuilder.append(NO_BRICK);

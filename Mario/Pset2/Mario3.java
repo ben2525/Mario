@@ -66,25 +66,21 @@ public class Mario3 {
         }
         while (!outputMode.equals("t") && !outputMode.equals("c"));
 
-        // The structure choice "P" is hard coded because it is the only choice
-        // at this time. The argument would otherwise be the user's choice.
-
-
-        //Structure structure = StructureFactory.makeStructure("P", hght);
         /*
-          Above line changed to below 2 lines for Singleton
-          Other changes made in StructureFactory.java
+            The structure choice "P" is hard coded because it is the only choice
+            at this time. The argument would otherwise be the user's choice.
          */
 
         /*
-           Changes now made to Singleton Design.
-           Below 2 lines now removed to implement Dependency Injection
+            Changes now made to Singleton Design.
+            Below 2 lines now removed to implement Dependency Injection
          */
         //Structure structure;
         //structure = StructureFactory.getInstance().makeStructure("P", hght);
 
         /*
-            Arguments in below print statements changed for Dependency Injection
+            Arguments in below   printTextContext()   method
+            changed for Dependency Injection
          */
 
         PrintContext context = new PrintContext();
