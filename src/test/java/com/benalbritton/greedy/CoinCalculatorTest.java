@@ -7,42 +7,46 @@ public class CoinCalculatorTest {
 
     private CoinCalculator coinCalculator = new CoinCalculator();
 
-    //protected void setUp() throws Exception {
-      //  coinCalculator = new CoinCalculator();
-    //}
-
     @Test
     public void testOneDollarCoin() {
-
         int coinMessage = coinCalculator.calculateChange(2.00);
-
         assertEquals(2, coinMessage);
     }
 
-    /*
     @Test
-    public void zeroChangeMeansYouGetZeroCoins() {
-
-        String coinMessage = coinCalculator.calculateChange("$0.00");
-
-        assertEquals("No coins returned", coinMessage);
+    public void testQuarter() {
+        int coinMessage = coinCalculator.calculateChange(0.75);
+        assertEquals(3, coinMessage);
     }
 
     @Test
-    public void oneCentShouldGiveYouOnePenny() {
-
-        String coinMessage = coinCalculator.calculateChange("$0.01");
-
-        assertEquals("1 penny", coinMessage);
+    public void testDime() {
+        int coinMessage = coinCalculator.calculateChange(0.20);
+        assertEquals(2, coinMessage);
     }
 
     @Test
-    public void tenCentsShouldGiveYouOneDime() {
-
-        String coinMessage = coinCalculator.calculateChange("$0.10");
-
-        assertEquals("1 dime", coinMessage);
+    public void testNickel() {
+        int coinMessage = coinCalculator.calculateChange(0.05);
+        assertEquals(1, coinMessage);
     }
-    */
+
+    @Test
+    public void testPenney() {
+        int coinMessage = coinCalculator.calculateChange(0.04);
+        assertEquals(4, coinMessage);
+    }
+
+    @Test
+    public void testZeroCoins() {
+        int coinMessage = coinCalculator.calculateChange(0.00);
+        assertEquals(0, coinMessage);
+    }
+
+    @Test
+    public void testDollarQuarterDimeNickelPenney() {
+        int coinMessage = coinCalculator.calculateChange(1.41);
+        assertEquals(5, coinMessage);
+    }
 
 }
