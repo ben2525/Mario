@@ -10,43 +10,23 @@ import java.io.InputStreamReader;
 
 public class Greedy {
 
+    private int totalCoins;
+
     public static void main(String[] varArgs) {
 
-        Greedy greedy = new Greedy();
-        greedy.startGreedy();
+        if (varArgs.length > 0) {
+            CoinCalculator coinCalculator = new CoinCalculator();
+            coinCalculator.calculateChange(varArgs[0]);
+            //System.out.println(totalCoins);
+        }
+        else
+            throw new IllegalArgumentException("No value given");
+
+        //Greedy greedy = new Greedy();
+        //greedy.startGreedy();
     }
 
     public void startGreedy() {
-
-        String moneyFromUser = "";
-        float moneyToChange = -1;
-        int totalCoins;
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        do {
-            System.out.print("Enter the monetary amount to be returned in coins as a decimal :  ");
-
-            try {
-                moneyFromUser = br.readLine();
-            }
-            catch (IOException ex) {
-                System.out.println("I am sorry.  Error reading your input");
-                ex.printStackTrace();
-            }
-
-            try {
-                moneyToChange = Float.valueOf(moneyFromUser.trim());
-            }
-            catch (NumberFormatException nfe) {
-                System.out.println("Just a decimal number, please");
-            }
-        }
-        while (moneyToChange < 0);
-
-        CoinCalculator coinCalculator = new CoinCalculator();
-        totalCoins = coinCalculator.calculateChange(moneyToChange);
-        System.out.println(totalCoins);
     }
 
 }
