@@ -9,10 +9,30 @@ public class CoinCalculatorTest {
 
     @Test
     public void testOneDollarCoin() {
-        int coinMessage = coinCalculator.calculateChange("2.00");
+        int coinMessage = coinCalculator.calculateChange("$2.00");
         assertEquals(2, coinMessage);
     }
 /*
+    @Test
+    public void testIsEuroCurrency() {
+        char currencyType = coinCalculator.verifyCurrencyType("$1.00");
+        assertEquals('$', currencyType);
+    }
+
+    @Test
+    public void testIsAmericanCurrency() {
+        char currencyType = coinCalculator.verifyCurrencyType("€1.00");
+        assertEquals('€', currencyType);
+    }
+
+    @Test
+    public void testInputIsMoneyAsPositiveDecimalValue() {
+        int moneyFloatValue = coinCalculator.moneyValueAsInteger("$1.00");
+        assertEquals(100, moneyFloatValue);
+    }
+
+
+
     @Test
     public void testQuarter() {
         int coinMessage = coinCalculator.calculateChange(0.75);
