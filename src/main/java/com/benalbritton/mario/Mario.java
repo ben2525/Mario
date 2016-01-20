@@ -9,8 +9,8 @@ import java.io.*;
 
 /*
     Use of Maven  &  Spring.
-    Singleton design pattern used along with Factory design pattern for pyramid
-    and with Strategy design pattern.
+    Singleton design pattern eliminated.  Used Factory design pattern for pyramid
+    and Strategy design pattern.
     All structures would implement the  com.benalbritton.mario.Structure  interface.
     There is only a  Pyramid  option at this time, so the argument is
     hard coded.
@@ -19,7 +19,7 @@ import java.io.*;
 
 public class Mario {
 
-    int hght = -1;
+    int hght;
     String height = "";
     String outputMode = "";
 

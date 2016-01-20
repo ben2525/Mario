@@ -2,27 +2,8 @@ package com.benalbritton.mario;
 
 public class StructureFactory {
 
-    //  Start code implementing Singleton design pattern
+    public StructureFactory(){}
 
-    private StructureFactory(){}
-
-    private static StructureFactory structureFactory;
-
-    public static StructureFactory getInstance() {
-        if(structureFactory == null){
-            structureFactory = new StructureFactory();
-        }
-        return structureFactory;
-    }
-
-    //  End Singleton implementation
-
-    /*
-       Remove "static" from  method for Singleton
-
-       So "structure" in Mario3.java now uses an instance reference
-       instead of a class reference
-     */
     public Structure makeStructure(String structureType, int hght) {
 
         if (structureType.equals("P")) {
@@ -30,7 +11,8 @@ public class StructureFactory {
             pyramid.buildStructure();
             return pyramid;
         } else
-            return null;
+            throw new IllegalArgumentException("The only structure choice \n" +
+                    "is currently  P  for pyramid");
 
     }
 
