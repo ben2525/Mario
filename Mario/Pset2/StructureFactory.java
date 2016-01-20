@@ -10,7 +10,8 @@ public class StructureFactory {
             pyramid.buildStructure();
             return pyramid;
         } else
-            return null;
+            throw new IllegalArgumentException("The only structure choice \n" +
+                    "is currently  P  for pyramid");
 
     }
 
