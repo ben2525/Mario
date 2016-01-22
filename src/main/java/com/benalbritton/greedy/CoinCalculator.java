@@ -2,7 +2,7 @@ package com.benalbritton.greedy;
 
 public class CoinCalculator {
 
-    private char verifyCurrencyType(String money) {
+    private char acquireCurrencyType(String money) {
         char monetaryType = money.trim().charAt(0);
         return monetaryType;
     }
@@ -37,13 +37,13 @@ public class CoinCalculator {
     public int calculateChange(String moneyToChange) {
 
         int moneyValueToChange;
-        int totalCoins = 0;
+        int totalCoins = -1;
         char currencyType;
 
         int[] euroCoins = {200, 100, 50, 20, 10, 5, 2, 1};
         int[] usCoins = {100, 25, 10, 5, 1};
 
-        currencyType = verifyCurrencyType(moneyToChange);
+        currencyType = acquireCurrencyType(moneyToChange);
         moneyValueToChange = moneyValueAsInteger(moneyToChange);
 
         if(moneyValueToChange >= 0) {
@@ -56,7 +56,6 @@ public class CoinCalculator {
             else {
                 System.out.println("Please use  $  for US currency or  €  for Euro currency.");
             }
-
         }
         else {
             System.out.println("No change can be returned for a negative amount.");
