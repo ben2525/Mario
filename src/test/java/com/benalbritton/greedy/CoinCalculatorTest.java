@@ -15,14 +15,14 @@ public class CoinCalculatorTest {
 /*
     @Test
     public void testIsEuroCurrency() {
-        char currencyType = coinCalculator.verifyCurrencyType("$1.00");
-        assertEquals('$', currencyType);
+        String currencyType = coinCalculator.verifyCurrencyType("$1.00");
+        assertEquals("$", currencyType);
     }
 
     @Test
     public void testIsAmericanCurrency() {
-        char currencyType = coinCalculator.verifyCurrencyType("€1.00");
-        assertEquals('€', currencyType);
+        String currencyType = coinCalculator.verifyCurrencyType("€1.00");
+        assertEquals("€", currencyType);
     }
 
     @Test

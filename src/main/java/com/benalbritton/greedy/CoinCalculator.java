@@ -2,9 +2,9 @@ package com.benalbritton.greedy;
 
 public class CoinCalculator {
 
-    private char acquireCurrencyType(String money) {
-        char monetaryType = money.trim().charAt(0);
-        return monetaryType;
+    private String acquireCurrencyType(String money) {
+        money = money.trim().substring(0, 1);
+        return money;
     }
 
     private int moneyValueAsInteger(String money) {
@@ -38,7 +38,7 @@ public class CoinCalculator {
 
         int moneyValueToChange;
         int totalCoins = -1;
-        char currencyType;
+        String currencyType;
 
         int[] euroCoins = {200, 100, 50, 20, 10, 5, 2, 1};
         int[] usCoins = {100, 25, 10, 5, 1};
@@ -47,10 +47,10 @@ public class CoinCalculator {
         moneyValueToChange = moneyValueAsInteger(moneyToChange);
 
         if(moneyValueToChange >= 0) {
-            if (currencyType == '$') {
+            if (currencyType.equals("$")) {
                 totalCoins = calculateCoins(moneyValueToChange, usCoins);
             }
-            else if (currencyType == '€') {
+            else if (currencyType.equals("€")) {
                 totalCoins = calculateCoins(moneyValueToChange, euroCoins);
             }
             else {
