@@ -6,8 +6,6 @@ public class MoneyChangerFactory {
 
     char currencyType;
 
-    private static final int[] euroCoins = {200, 100, 50, 20, 10, 5, 2, 1};
-    private static final int[] usCoins = {100, 25, 10, 5, 1};
 
     /*
     public int acquireCoins(char currencyType, int moneyValueToChange){
