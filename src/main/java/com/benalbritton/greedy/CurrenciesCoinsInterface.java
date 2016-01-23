@@ -12,4 +12,5 @@ public interface CurrenciesCoinsInterface {
     String euro = "€";
 
     HashMap makeCurrencyHashMap();
+
 }

@@ -1,5 +1,7 @@
 package com.benalbritton.greedy;
 
+import java.util.HashMap;
+
 public class CoinCalculator {
 
     private String acquireCurrencyType(String money) {
@@ -24,11 +26,10 @@ public class CoinCalculator {
         int numberOfCoins = 0;
         int change = amountToChange;
 
-        int numberCurrenciesCoins = currenciesCoins.length;
-
-        for(int coin = 0; coin < numberCurrenciesCoins; coin++) {
-            numberOfCoins += change / currenciesCoins[coin];
-            change = change % currenciesCoins[coin];
+        int length = currenciesCoins.length;
+        for(int i = 0; i < length; i++) {
+            numberOfCoins += change / currenciesCoins[i];
+            change = change % currenciesCoins[i];
         }
 
         return numberOfCoins;
@@ -40,18 +41,15 @@ public class CoinCalculator {
         int totalCoins = -1;
         String currencyType;
 
-        int[] euroCoins = {200, 100, 50, 20, 10, 5, 2, 1};
-        int[] usCoins = {100, 25, 10, 5, 1};
-
         currencyType = acquireCurrencyType(moneyToChange);
         moneyValueToChange = moneyValueAsInteger(moneyToChange);
 
+        CurrenciesCoinsMap currenciesCoinsMap = new CurrenciesCoinsMap();
+        HashMap coinList = currenciesCoinsMap.makeCurrencyHashMap();
+
         if(moneyValueToChange >= 0) {
-            if (currencyType.equals("$")) {
-                totalCoins = calculateCoins(moneyValueToChange, usCoins);
-            }
-            else if (currencyType.equals("€")) {
-                totalCoins = calculateCoins(moneyValueToChange, euroCoins);
+            if(coinList.containsKey(currencyType)){
+                totalCoins = calculateCoins(moneyValueToChange, (int[])coinList.get(currencyType));
             }
             else {
                 System.out.println("Please use  $  for US currency or  €  for Euro currency.");
