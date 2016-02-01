@@ -5,4 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
+    <bean id="coinCalculator" class="com.benalbritton.greedy.CoinCalculator" />
+
+    <bean id="currenciesCoins" class="com.benalbritton.greedy.CurrenciesCoinsMap" />
+
 </beans>

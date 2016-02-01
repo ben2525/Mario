@@ -1,5 +1,8 @@
 package com.benalbritton.greedy;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.util.HashMap;
 
 public class CoinCalculator {
@@ -10,9 +13,10 @@ public class CoinCalculator {
     }
 
     private int moneyValueAsInteger(String money) {
+
         int changeValue = 0;
         try {
-            changeValue = (int)(Float.valueOf(money.substring(1).trim()) * 100);
+            changeValue = Math.round(Float.valueOf(money.substring(1).trim()) * 100);
         }
         catch (NumberFormatException nfe) {
             System.out.println("Just a (positive) monetary amount, please");
@@ -26,10 +30,9 @@ public class CoinCalculator {
         int numberOfCoins = 0;
         int change = amountToChange;
 
-        int length = currenciesCoins.length;
-        for(int i = 0; i < length; i++) {
-            numberOfCoins += change / currenciesCoins[i];
-            change = change % currenciesCoins[i];
+        for (int coins:currenciesCoins) {
+            numberOfCoins += change / coins;
+            change = change % coins;
         }
 
         return numberOfCoins;
@@ -38,18 +41,20 @@ public class CoinCalculator {
     public int calculateChange(String moneyToChange) {
 
         int moneyValueToChange;
-        int totalCoins = -1;
+        int totalCoins = 0;
         String currencyType;
 
         currencyType = acquireCurrencyType(moneyToChange);
         moneyValueToChange = moneyValueAsInteger(moneyToChange);
 
-        CurrenciesCoinsMap currenciesCoinsMap = new CurrenciesCoinsMap();
-        HashMap coinList = currenciesCoinsMap.makeCurrencyHashMap();
+        ApplicationContext context = new ClassPathXmlApplicationContext("springBeans.xml");
+        CurrenciesCoinsInterface currenciesCoinsInterface = (CurrenciesCoinsInterface) context.getBean("currenciesCoins");
+        HashMap coinList = currenciesCoinsInterface.makeCurrencyHashMap();
 
         if(moneyValueToChange >= 0) {
             if(coinList.containsKey(currencyType)){
                 totalCoins = calculateCoins(moneyValueToChange, (int[])coinList.get(currencyType));
+                System.out.println(moneyToChange + " gives coins in currency " + currencyType + " returned are " + totalCoins);
             }
             else {
                 System.out.println("Please use  $  for US currency or  €  for Euro currency.");
@@ -59,7 +64,6 @@ public class CoinCalculator {
             System.out.println("No change can be returned for a negative amount.");
         }
 
-        System.out.println(totalCoins);
         return totalCoins;
     }
 
