@@ -47,6 +47,7 @@ public class CoinCalculator {
         currencyType = acquireCurrencyType(moneyToChange);
         moneyValueToChange = moneyValueAsInteger(moneyToChange);
 
+        // Spring bean is coded to an interface in below code.
         ApplicationContext context = new ClassPathXmlApplicationContext("springBeans.xml");
         CurrenciesCoinsInterface currenciesCoinsInterface = (CurrenciesCoinsInterface) context.getBean("currenciesCoins");
         HashMap coinList = currenciesCoinsInterface.makeCurrencyHashMap();
