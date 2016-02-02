@@ -11,10 +11,14 @@
 
     <bean id="structureFactory" class="com.benalbritton.mario.StructureFactory" />
 
-    <bean id="printContext" class="com.benalbritton.mario.PrintContext" />
-
     <bean id="pyramid" class="com.benalbritton.mario.Pyramid" scope="prototype">
         <constructor-arg value="0" />
     </bean>
+
+    <bean id="printContext" class="com.benalbritton.mario.PrintContext" />
+
+    <bean id="consolePrintStrategy" class="com.benalbritton.mario.printerpackage.ConsolePrintStrategy" />
+
+    <bean id="filePrintStrategy" class="com.benalbritton.mario.printerpackage.FilePrintStrategy" />
 
 </beans>

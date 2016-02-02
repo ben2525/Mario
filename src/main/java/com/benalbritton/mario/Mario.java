@@ -1,7 +1,5 @@
 package com.benalbritton.mario;
 
-import com.benalbritton.mario.printerpackage.ConsolePrintStrategy;
-import com.benalbritton.mario.printerpackage.FilePrintStrategy;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -75,15 +73,17 @@ public class Mario {
             // at this time. The argument would otherwise be the user's choice.
 
         ApplicationContext context = new ClassPathXmlApplicationContext("springBeans.xml");
-        PrintContext printContext = (PrintContext) context.getBean("printContext");
-        //PrintContext context = new PrintContext();
 
+        PrintContext printContext = (PrintContext) context.getBean("printContext");
+
+        PrintStrategy printStrategy;
         if (outputMode.equals("c")) {
-            printContext.setStrategy(new ConsolePrintStrategy());
-            printContext.printTextContext(structureFactory.makeStructure("P", hght));
+            printStrategy = (PrintStrategy) context.getBean("consolePrintStrategy");
         } else {
-            printContext.setStrategy(new FilePrintStrategy());
-            printContext.printTextContext(structureFactory.makeStructure("P", hght));
+            printStrategy = (PrintStrategy) context.getBean("filePrintStrategy");
         }
+
+        printContext.setStrategy(printStrategy);
+        printContext.printTextContext(structureFactory.makeStructure("P", hght));
     }
 }
