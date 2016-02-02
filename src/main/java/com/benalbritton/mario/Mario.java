@@ -73,14 +73,17 @@ public class Mario {
 
             // The structure choice "P" is hard coded because it is the only choice
             // at this time. The argument would otherwise be the user's choice.
-        PrintContext context = new PrintContext();
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("springBeans.xml");
+        PrintContext printContext = (PrintContext) context.getBean("printContext");
+        //PrintContext context = new PrintContext();
 
         if (outputMode.equals("c")) {
-            context.setStrategy(new ConsolePrintStrategy());
-            context.printTextContext(structureFactory.makeStructure("P", hght));
+            printContext.setStrategy(new ConsolePrintStrategy());
+            printContext.printTextContext(structureFactory.makeStructure("P", hght));
         } else {
-            context.setStrategy(new FilePrintStrategy());
-            context.printTextContext(structureFactory.makeStructure("P", hght));
+            printContext.setStrategy(new FilePrintStrategy());
+            printContext.printTextContext(structureFactory.makeStructure("P", hght));
         }
     }
 }

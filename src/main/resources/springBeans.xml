@@ -11,4 +11,10 @@
 
     <bean id="structureFactory" class="com.benalbritton.mario.StructureFactory" />
 
+    <bean id="printContext" class="com.benalbritton.mario.PrintContext" />
+
+    <bean id="pyramid" class="com.benalbritton.mario.Pyramid" scope="prototype">
+        <constructor-arg value="0" />
+    </bean>
+
 </beans>
