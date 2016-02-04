@@ -35,39 +35,42 @@ public class Mario {
     }
 
     public void startStructure() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        do {
-            System.out.print("Enter pyramid height from 0 to 23 :  ");
-            try {
-                height = br.readLine();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+
+            do {
+                System.out.print("Enter pyramid height from 0 to 23 :  ");
+                try {
+                    height = br.readLine();
+                } catch (IOException ex) {
+                    System.out.println("I am sorry.  Error reading your input");
+                    ex.printStackTrace();
+                }
+                try {
+                    hght = Integer.parseInt(height);
+                } catch (NumberFormatException ex) {
+                    System.out.println("You did not enter an integer");
+                }
             }
-            catch (IOException ex) {
-                System.out.println("I am sorry.  Error reading your input");
-                ex.printStackTrace();
+            while (hght < 0 || hght > 23);
+
+            do {
+                System.out.println("Enter  t  to print your output to a text file,");
+                System.out.println("Enter  c  to print your output to the console,");
+
+                try {
+                    outputMode = br.readLine();
+                } catch (IOException ex) {
+                    System.out.println("I am sorry.  Error reading your input");
+                    ex.printStackTrace();
+                }
             }
-            try {
-                hght = Integer.parseInt(height);
-            }
-            catch (NumberFormatException ex) {
-                System.out.println("You did not enter an integer");
-            }
+            while (!outputMode.equals("t") && !outputMode.equals("c"));
+
         }
-        while (hght < 0 || hght > 23);
-
-        do {
-            System.out.println("Enter  t  to print your output to a text file,");
-            System.out.println("Enter  c  to print your output to the console,");
-
-            try {
-                outputMode = br.readLine();
-            }
-            catch (IOException ex) {
-                System.out.println("I am sorry.  Error reading your input");
-                ex.printStackTrace();
-            }
+        catch (IOException ex) {
+            ex.printStackTrace();
         }
-        while (!outputMode.equals("t") && !outputMode.equals("c"));
 
             // The structure choice "P" is hard coded because it is the only choice
             // at this time. The argument would otherwise be the user's choice.
