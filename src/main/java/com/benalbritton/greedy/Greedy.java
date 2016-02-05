@@ -5,8 +5,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Greedy {
 
-    private int totalCoins;
-
     public static void main(String[] varArgs) {
 
         if (varArgs.length > 0) {

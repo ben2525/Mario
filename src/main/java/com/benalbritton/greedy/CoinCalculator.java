@@ -43,6 +43,7 @@ public class CoinCalculator {
         int moneyValueToChange;
         int totalCoins = 0;
         String currencyType;
+        StringBuilder stringBuilder = new StringBuilder();
 
         currencyType = acquireCurrencyType(moneyToChange);
         moneyValueToChange = moneyValueAsInteger(moneyToChange);
@@ -55,7 +56,13 @@ public class CoinCalculator {
         if(moneyValueToChange >= 0) {
             if(coinList.containsKey(currencyType)){
                 totalCoins = calculateCoins(moneyValueToChange, (int[])coinList.get(currencyType));
-                System.out.println(moneyToChange + " gives coins in currency " + currencyType + " returned are " + totalCoins);
+                stringBuilder.append(moneyToChange);
+                stringBuilder.append(" is the currency type  ");
+                stringBuilder.append(currencyType);
+                stringBuilder.append("  and returns a coin total of ");
+                stringBuilder.append(totalCoins);
+                stringBuilder.append(System.lineSeparator());
+                System.out.println(stringBuilder);
             }
             else {
                 System.out.println("Please use  $  for US currency or  €  for Euro currency.");
